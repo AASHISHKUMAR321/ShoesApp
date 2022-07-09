@@ -32,6 +32,10 @@ app.get('/shoes',async(req,res)=>{
         }
 })
 
+app.get('/',async(req,res)=>{
+
+    res.send('home page')
+})
 
 app.listen(3434,async()=>{
 
