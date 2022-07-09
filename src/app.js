@@ -36,8 +36,8 @@ app.get('/',async(req,res)=>{
 
     res.send('home page')
 })
-
-app.listen(3434,async()=>{
+const port = process.env.PORT || 5000;
+app.listen(port,async()=>{
 
     try{    await connect()
         console.log('Server Started on 3434')
