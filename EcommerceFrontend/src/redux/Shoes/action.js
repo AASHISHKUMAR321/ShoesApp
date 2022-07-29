@@ -12,7 +12,7 @@ export const getshoes =
   ({ page, sort, filter }) =>
   async (dispatch) => {
     const data = await axios.get(
-      `http://localhost:5000/shoes?page=${page}&sort=${
+      `https://ak-ecommerce-app.herokuapp.com/shoes?page=${page}&sort=${
         sort ? 1 : -1
       }&filter=${filter}`
     );
