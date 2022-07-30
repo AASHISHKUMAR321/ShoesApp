@@ -24,9 +24,9 @@ export const signUp =
       });
   };
 
-export const Login =
+export const LoginAction =
   ({ user }) =>
-  async () => {
+  async (dispatch) => {
     await axios
       .post(`https://ak-ecommerce-app.herokuapp.com/login`, user)
       .then(({ data }) => {

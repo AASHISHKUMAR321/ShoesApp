@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getshoes } from "../redux/Shoes/action";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
 const HomeDiv = styled.div`
   .shoes {
     width: 90%;
@@ -19,6 +20,7 @@ const HomeDiv = styled.div`
     margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    cursor: pointer;
 
     gap: 40px;
   }
@@ -52,6 +54,7 @@ export const Home = () => {
   const dispatch = useDispatch();
   const [sort, setSort] = React.useState(true);
   const [filter, setFilter] = useState("puma");
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSort(!sort);
@@ -67,6 +70,9 @@ export const Home = () => {
 
   const handlePage = (event, value) => {
     setPage(value);
+  };
+  const clikHandler = (id) => {
+    navigate(`/details/${id}`);
   };
   console.log(filter);
   return (
@@ -87,6 +93,8 @@ export const Home = () => {
               price={e.price}
               description={e.desc}
               key={e._id}
+              id={e._id}
+              handler={clikHandler}
             />
           );
         })}

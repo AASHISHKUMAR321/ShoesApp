@@ -12,9 +12,11 @@ export default function ImgMediaCard({
   description,
   price,
   addtocart,
+  handler,
+  id,
 }) {
   return (
-    <Card sx={{ maxWidth: 280 }}>
+    <Card sx={{ maxWidth: 280 }} onClick={() => handler(id)}>
       <CardMedia
         component="img"
         alt="green iguana"

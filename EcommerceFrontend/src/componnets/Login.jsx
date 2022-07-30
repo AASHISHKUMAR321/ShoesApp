@@ -5,7 +5,7 @@ import { Button } from "./Button";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuth } from "../redux/Auth/action";
+import { setAuth, LoginAction } from "../redux/Auth/action";
 const LoginDiv = styled.div`
   width: 100%;
 
@@ -28,8 +28,7 @@ export const Login = () => {
   };
 
   const HandleClick = () => {
-    console.log(user);
-    dispatch(setAuth({ user }));
+    dispatch(LoginAction({ user }));
   };
 
   return (
