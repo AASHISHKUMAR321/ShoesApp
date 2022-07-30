@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ImgMediaCard from "./Card";
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
 const CartDiv = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -47,6 +48,7 @@ const CartDiv = styled.div`
 export const Cart = () => {
   const [cartArr, setCartArr] = useState([]);
   const [click, setClick] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const Arr = JSON.parse(localStorage.getItem("product")) || [];
     setCartArr(Arr);
@@ -57,6 +59,10 @@ export const Cart = () => {
     cartArr.splice(i, 1);
     localStorage.setItem("product", JSON.stringify(cartArr));
     setClick(!click);
+  };
+  const checkoutHandler = () => {
+    alert("your order is placed");
+    navigate("/");
   };
   return (
     <CartDiv>
@@ -90,7 +96,7 @@ export const Cart = () => {
       <div className="checkout">
         <h3>SubTotal:{sum}</h3>
         <hr />
-        <Button name={"CheckOut"} />
+        <Button name={"CheckOut"} handle={checkoutHandler} />
       </div>
     </CartDiv>
   );
