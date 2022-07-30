@@ -19,6 +19,7 @@ const HomeDiv = styled.div`
     margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
     gap: 40px;
   }
   .filterAndsort {
@@ -26,6 +27,24 @@ const HomeDiv = styled.div`
     justify-content: center;
     margin-top: 50px;
     gap: 50px;
+  }
+  @media only screen and (min-width: 0px) and (max-width: 400px) {
+    .shoes {
+      grid-template-columns: repeat(1, 1fr);
+      justify-content: center;
+      align-items: center;
+    }
+    .filterAndsort {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      gap: 10px;
+    }
+  }
+  @media only screen and (min-width: 400px) and (max-width: 768px) {
+    .shoes {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 `;
 
@@ -72,14 +91,14 @@ export const Home = () => {
           );
         })}
       </div>
-      <Stack spacing={10}>
+      <Stack spacing={0}>
         <Pagination
           count={10}
           variant="outlined"
           shape="rounded"
           page={page}
           onChange={handlePage}
-          sx={{ marginLeft: "100px" }}
+          sx={{ margin: "auto", marginTop: "20px" }}
         />
       </Stack>
     </HomeDiv>

@@ -6,7 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function ImgMediaCard({ image, brand, description, price }) {
+export default function ImgMediaCard({
+  image,
+  brand,
+  description,
+  price,
+  addtocart,
+}) {
   return (
     <Card sx={{ maxWidth: 280 }}>
       <CardMedia
@@ -24,8 +30,10 @@ export default function ImgMediaCard({ image, brand, description, price }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">{price}</Button>
-       
+        <Button size="small">Rs-{price}</Button>
+        <Button size="small" onClick={addtocart}>
+          Add To Cart
+        </Button>
       </CardActions>
     </Card>
   );

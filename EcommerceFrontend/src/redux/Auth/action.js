@@ -1,9 +1,45 @@
-export const Auth="AUTH";
+import axios from "axios";
 
-export const setAuth = (data)=>{
+export const Auth = "AUTH";
+export const Signup = "SIGNUP";
 
-        return {
-            type:Auth,
-            payload:data
-        }
-}
+export const setSignup = (data) => {
+  return {
+    type: Signup,
+    payload: data,
+  };
+};
+
+export const signUp =
+  ({ user }) =>
+  async (dispatch) => {
+    console.log("action", user);
+    await axios
+      .post(`https://ak-ecommerce-app.herokuapp.com/signup`, user)
+      .then(({ data }) => {
+        data.errors ? alert(`${data.errors[0].msg}`) : alert("user is created");
+      })
+      .then(() => {
+        dispatch(setSignup(true));
+      });
+  };
+
+export const Login =
+  ({ user }) =>
+  async () => {
+    await axios
+      .post(`https://ak-ecommerce-app.herokuapp.com/login`, user)
+      .then(({ data }) => {
+        data.errors ? alert(`${data.errors[0].msg}`) : dispatch(setAuth(data));
+      })
+      .then(() => {
+        alert("user is loged In");
+      });
+  };
+
+export const setAuth = (data) => {
+  return {
+    type: Auth,
+    payload: data,
+  };
+};

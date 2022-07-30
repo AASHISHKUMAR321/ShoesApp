@@ -18,7 +18,6 @@ app.use(
 );
 app.use(
   "/login",
-  body("username").notEmpty().isString().isLength({ min: 3, max: 20 }),
   body("email").isEmail().notEmpty(),
   body("password").isLength({ min: 5, max: 20 }),
   login
