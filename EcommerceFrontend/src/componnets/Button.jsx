@@ -11,10 +11,10 @@ const ButtonDiv = styled.div`
   }
 `;
 
-export const Button = ({ name, handle }) => {
+export const Button = ({ name, handle, index }) => {
   return (
     <ButtonDiv>
-      <button onClick={handle}>{name}</button>
+      <button onClick={() => handle(index)}>{name}</button>
     </ButtonDiv>
   );
 };
