@@ -44,7 +44,7 @@ app.get("/shoes", async (req, res) => {
 
 app.get("/shoes/:id", async (req, res) => {
   try {
-    let prod = await shoesModel.findOne(req.params.id);
+    let prod = await shoesModel.findOne({ _id: req.params.id });
     res.send(prod);
   } catch (err) {
     console.log(err);

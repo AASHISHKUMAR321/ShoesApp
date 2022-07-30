@@ -20,6 +20,7 @@ export const Details = () => {
       .get(`https://ak-ecommerce-app.herokuapp.com/shoes/:${id}`)
       .then(({ data }) => setProduct(data));
   }, []);
+  console.log(product);
   return (
     <ShowDiv>
       <div>image</div>
